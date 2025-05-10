@@ -14,6 +14,10 @@ def init_history_file():
     if not os.path.exists(Constant.HISTORY_FILE.value):
         with open(Constant.HISTORY_FILE.value, "w") as f:
             f.write("")
+            
+def init_asset_library():
+    if not os.path.exists(Constant.ASSET_LIBRARY_PATH.value):
+        os.makedirs(Constant.ASSET_LIBRARY_PATH.value)
         
 def init_env_variables():
     os.environ["DEEPSEEK_API_KEY"] = GLOBAL_CONFIG.get("deepseek").get("api_key")
@@ -24,3 +28,4 @@ def init():
     init_folder_generation()
     init_env_variables()
     init_history_file()
+    init_asset_library()
